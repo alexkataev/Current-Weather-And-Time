@@ -1,0 +1,15 @@
+<!-- Top-Bar-Home template -->
+<div id="header">
+    <a routerLink="/preferences">
+        <img src="../../../assets/icons/preferences.png">
+        <span class="upper">Preferences</span>
+    </a>
+    <div id="btns-temp" *ngIf="isEmpty == false">
+        <div class="btn-temp fahrenheit" [class.on]="curTempUnits === 'fahrenheit'" (click)="convertTemp('toFahrenheit')">
+            <span class="upper">&deg;F</span>
+        </div>
+        <div class="btn-temp celsius" [class.on]="curTempUnits === 'celcius'" (click)="convertTemp('toCelcius')">
+            <span class="upper">&deg;C</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+#header {
+    padding: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 35px;
+    background-color: #f6f6f6;
+    padding: 0 15px;
+}
+#header > a {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    cursor: pointer;
+}
+#header > a > img {
+    width: 16px;
+    height: 16px;
+}
+#header > a > span {
+    display: inline-block;
+    margin-left: 10px;
+}
+span.upper {
+    text-transform: uppercase;  
+    font-size: 9px;
+    font-weight: 600;
+    color: #9B9B9B;
+}
