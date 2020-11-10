@@ -1,0 +1,38 @@
+#btns-temp {
+    display: flex;
+    flex-flow: row nowrap;
+    font-size: 10px;
+    text-transform: uppercase;
+    border-radius: 50px;
+}
+/* #btns_temp:hover {
+    box-shadow: 0px 0px 4px #eaeaea;
+} */
+.btn-temp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 49px;
+    height: 24px;
+    padding-top: 2px;
+    cursor: pointer;
+    color: #9B9B9B;
+}
+.btn-temp.fahrenheit {
+    border-radius: 50px 0 0 50px;
+    border: 1px solid #eaeaea;
+}
+.btn-temp.celsius {
+    border-radius: 0 50px 50px 0;
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+    border-right: 1px solid #eaeaea;
+}
+/* .btn-temp.off {
+    background-color: #f6f6f6;
+} */
+.btn-temp.on {
+    background-color: #fff;
+    color: #000;
+}
