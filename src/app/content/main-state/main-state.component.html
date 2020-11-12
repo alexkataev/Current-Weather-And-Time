@@ -1,0 +1,20 @@
+<!-- Main-State template -->
+
+<div id="results-container" (mouseenter)="checkWeather()">
+    <div class="city-container" id="{{ city.locationId }}" *ngFor="let city of cities$ | async; let i=index;">
+        <div class="city-info-wrapper">
+            <span class="city-n">{{ city.city_name }}</span>
+            <span class="country-n">{{ city.state? city.state + ',' : '' }} {{ city.country_name }}</span>
+        </div>
+        <div class="city-time-wrapper">
+            <span class="city-time">{{ city.cur_time }}</span>
+            <span class="today">{{ city.cur_date }}</span>
+        </div>
+        <div class="city-weather-wrapper">
+            <img class="w-icon" title="{{ city.w_description }}" src="{{ city.w_icon }}">
+
+            <span class='w-temp' *ngIf="curTempUnits === 'celcius'">{{ city.w_temp_kelvin }}</span>
+            <span class='w-temp' *ngIf="curTempUnits === 'fahrenheit'">{{ city.w_temp_kelvin }}</span>
+        </div>
+    </div>
+</div>
