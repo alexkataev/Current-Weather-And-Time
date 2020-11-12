@@ -1,0 +1,30 @@
+<!-- Saved-State -->
+
+<div class="content">
+    
+    <div id="msg-for-empty" *ngIf="isEmpty === true">
+        <p>Here you will find your saved cities.<br>Add some right now!</p>
+        <a class="btn-add-cities empty" routerLink="/search">
+            <span>Add</span>
+        </a>
+    </div>
+    <div *ngIf="isEmpty === false">
+        <a class="btn-add-cities" routerLink="/search">
+            <span>Add</span>
+        </a>
+        <p class="category">Saved</p>
+        <div cdkDropList id="results-container" [cdkDropListData]="cities$ | async" (cdkDropListDropped)="drop($event)">
+            <div id="{{city.locationId}}" class="res-item" *ngFor="let city of cities$ | async" cdkDragLockAxis="y" cdkDrag>
+                <div>
+                    <div class="icon-area">
+                        <img class="icon drag" src="../../../assets/icons/drag.png">
+                    </div>
+                    <span class="res-info">{{ city.city_name }}, {{ city.state? city.state + ',' : '' }} {{ city.country_name }}</span>
+                </div>
+                <div class="icon-area" (click)="removeCity(city.locationId)">
+                    <img class="icon bin" src="../../../assets/icons/bin.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

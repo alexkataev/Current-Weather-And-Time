@@ -1,0 +1,47 @@
+<!-- Search-state -->
+<div class="content">
+    <form id="wrapper"
+            [formGroup]="searchForm" 
+            #formDir="ngForm" 
+            (ngSubmit)="onEnter(formDir)">
+        <div class="form-group">
+            <input id="user-input" placeholder="Search by city..." 
+                   class="form-control"
+                   formControlName="cityNameQuery" 
+                   >    
+        </div>
+
+        <button id="btn-enter" [disabled]="searchForm.invalid">Enter</button>
+
+        <div id="form-errors" *ngIf="cityNameQuery?.invalid && (cityNameQuery?.dirty || cityNameQuery?.touched)"
+                class="alert alert-danger">
+            <div class="error-msg" *ngIf="cityNameQuery.errors.minlength">
+                &bull; At least 4 characters long
+            </div>
+            <div class="error-msg" *ngIf="cityNameQuery.errors.maxlength">
+                &bull; At most 40 characters long
+            </div>
+            <div class="error-msg" *ngIf="cityNameQuery.errors.pattern">
+                &bull; Only English letters
+            </div>
+        </div>
+    </form>
+
+    <p class="category">Results</p>
+    <div id="results-container">
+        <p class="msg" *ngIf="searchStarted === false">Results will be shown here...</p>
+        <div *ngIf="searchStarted === true">
+            <div class="res-item" id={{city.locationId}} *ngFor="let city of cities.data | async">
+                <span class="res-info">{{ city.address.city }}, {{ city.address.state? city.address.state + ',' : '' }} {{ city.address.country }}</span>
+                <div class="icon-area" (click)="onAdd(city)">
+                    <img class="icon add" src="../../../assets/icons/add.png">
+                </div>
+            </div>
+            <div id="msg-container" [ngSwitch]="cities.status | async">
+                <span class="msg" *ngSwitchCase="status.LOADING">Loading Cities...</span>
+                <span class="msg" *ngSwitchCase="status.EMPTY">No matches found.</span>
+                <span class="msg" *ngSwitchCase="status.ERROR">There was an error loading the cities.</span>
+            </div>
+        </div>
+    </div>
+</div>
