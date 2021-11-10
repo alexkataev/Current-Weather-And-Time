@@ -330,6 +330,7 @@ export class CityService {
               element.w_icon = '../../assets/icons/w_icons/' + wdata['weather'][0]['icon'] + '.png';
               element.w_description = wdata['weather'][0]['description'];
               element.w_temp_kelvin = wdata['main']['temp'];
+              element.timezone = wdata['timezone'];
             }
           }); 
 
